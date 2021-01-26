@@ -1,46 +1,58 @@
 package sample.convert;
 
-import java.util.ArrayList;
-
 public class Pokemon {
-    private String tipo1;
-    private String tipo2;
+    private int NUM;
+    private String name;
+    private String tipe;
     private int HP;
     private int ATK;
     private int DEF;
     private int SATK;
     private int SDEF;
     private int SPE;
-    private ArrayList<String> ability;
+    private String ability1;
+    private String ability2;
+    private String ability3;
     private String item;
 
-    public Pokemon(String tipo1, String tipo2, int HP, int ATK, int DEF, int SATK, int SDEF, int SPE, ArrayList<String> ability, String item) {
-        this.tipo1 = tipo1;
-        this.tipo2 = tipo2;
+    public Pokemon(int NUM, String name, String tipe, int HP, int ATK, int DEF, int SATK, int SDEF, int SPE, String ability1, String ability2, String ability3, String item) {
+        this.NUM = NUM;
+        this.name = name;
+        this.tipe = tipe;
         this.HP = HP;
         this.ATK = ATK;
         this.DEF = DEF;
         this.SATK = SATK;
         this.SDEF = SDEF;
         this.SPE = SPE;
-        this.ability = ability;
+        this.ability1 = ability1;
+        this.ability2 = ability2;
+        this.ability3 = ability3;
         this.item = item;
     }
 
-    public String getTipo1() {
-        return tipo1;
+    public int getNUM() {
+        return NUM;
     }
 
-    public void setTipo1(String tipo1) {
-        this.tipo1 = tipo1;
+    public void setNUM(int NUM) {
+        this.NUM = NUM;
     }
 
-    public String getTipo2() {
-        return tipo2;
+    public String getName() {
+        return name;
     }
 
-    public void setTipo2(String tipo2) {
-        this.tipo2 = tipo2;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTipe() {
+        return tipe;
+    }
+
+    public void setTipe(String tipe) {
+        this.tipe = tipe;
     }
 
     public int getHP() {
@@ -91,12 +103,28 @@ public class Pokemon {
         this.SPE = SPE;
     }
 
-    public ArrayList<String> getAbility() {
-        return ability;
+    public String getAbility1() {
+        return ability1;
     }
 
-    public void setAbility(ArrayList<String> ability) {
-        this.ability = ability;
+    public void setAbility1(String ability1) {
+        this.ability1 = ability1;
+    }
+
+    public String getAbility2() {
+        return ability2;
+    }
+
+    public void setAbility2(String ability2) {
+        this.ability2 = ability2;
+    }
+
+    public String getAbility3() {
+        return ability3;
+    }
+
+    public void setAbility3(String ability3) {
+        this.ability3 = ability3;
     }
 
     public String getItem() {
