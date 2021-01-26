@@ -7,8 +7,9 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Conversion {
+    public static final String RANDOMIZED_EVOLUTIONS = "--Randomized Evolutions--";
+    public static final String POKEMON_BASE_STATS_TYPES = "--Pokemon Base Stats & Types--";
     private File inputLog;
-    //"\""+path+"\""
     public ArrayList<String> pokemon = new ArrayList<String>();
     public ArrayList<Pokemon> pokemonObject = new ArrayList<>();
     public ArrayList<String> fields = new ArrayList<>();
@@ -22,7 +23,7 @@ public class Conversion {
             Scanner reader = new Scanner(inputLog);
             do{
                 data = reader.nextLine();
-            }while(!data.equals("--Pokemon Base Stats & Types--"));
+            }while(!data.equals(POKEMON_BASE_STATS_TYPES));
             StringTokenizer splitFields = new StringTokenizer(reader.nextLine(), "|");
             while(splitFields.hasMoreTokens()){
                 fields.add(splitFields.nextToken().trim());
@@ -34,14 +35,14 @@ public class Conversion {
                 StringTokenizer splitPokemon = new StringTokenizer(reader.nextLine(), "|");
                 while(splitPokemon.hasMoreTokens()){
                     value = splitPokemon.nextToken().trim();
-                    if(!value.equalsIgnoreCase("--Randomized Evolutions--"))
+                    if(!value.equalsIgnoreCase(RANDOMIZED_EVOLUTIONS))
                     pokemon.add(value);
                     nFields++;
                 }
                 if(nFields==12)
-                    if(!value.equalsIgnoreCase("--Randomized Evolutions--"))
+                    if(!value.equalsIgnoreCase(RANDOMIZED_EVOLUTIONS))
                     pokemon.add("-");
-            }while(!value.equalsIgnoreCase("--Randomized Evolutions--"));
+            }while(!value.equalsIgnoreCase(RANDOMIZED_EVOLUTIONS));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -64,7 +65,8 @@ public class Conversion {
             System.out.println(pokemonObject.get(i).getName()+":");
             System.out.println(fields.get(0)+": "+pokemonObject.get(i).getNUM());
             System.out.println(fields.get(1)+": "+pokemonObject.get(i).getName());
-            System.out.println(fields.get(2)+": "+pokemonObject.get(i).getTipe());
+            System.out.println(fields.get(2)+"1: "+pokemonObject.get(i).getTipe1());
+            System.out.println(fields.get(2)+"2: "+pokemonObject.get(i).getTipe2());
             System.out.println(fields.get(3)+": "+pokemonObject.get(i).getHP());
             System.out.println(fields.get(4)+": "+pokemonObject.get(i).getATK());
             System.out.println(fields.get(5)+": "+pokemonObject.get(i).getDEF());

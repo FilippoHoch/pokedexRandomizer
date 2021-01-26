@@ -4,6 +4,8 @@ public class Pokemon {
     private int NUM;
     private String name;
     private String tipe;
+    private String tipe1;
+    private String tipe2;
     private int HP;
     private int ATK;
     private int DEF;
@@ -19,6 +21,7 @@ public class Pokemon {
         this.NUM = NUM;
         this.name = name;
         this.tipe = tipe;
+        impostTipe(tipe);
         this.HP = HP;
         this.ATK = ATK;
         this.DEF = DEF;
@@ -29,6 +32,24 @@ public class Pokemon {
         this.ability2 = ability2;
         this.ability3 = ability3;
         this.item = item;
+    }
+
+    public String getTipe1() {
+        return tipe1;
+    }
+
+    public void setTipe1(String tipe1) {
+        this.tipe1 = tipe1;
+    }
+
+    public String getTipe2() {
+        if(tipe2==null)
+            setTipe2("-");
+        return tipe2;
+    }
+
+    public void setTipe2(String tipe2) {
+        this.tipe2 = tipe2;
     }
 
     public int getNUM() {
@@ -53,6 +74,7 @@ public class Pokemon {
 
     public void setTipe(String tipe) {
         this.tipe = tipe;
+        impostTipe(tipe);
     }
 
     public int getHP() {
@@ -133,5 +155,16 @@ public class Pokemon {
 
     public void setItem(String item) {
         this.item = item;
+    }
+
+    public void impostTipe(String tipe){
+        boolean first = true;
+        for (String newTipe: tipe.split("/")){
+            if(first)
+                setTipe1(newTipe);
+            else
+                setTipe2(newTipe);
+
+        }
     }
 }
