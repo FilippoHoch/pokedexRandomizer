@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Conversion {
+
     public static final String RANDOMIZED_EVOLUTIONS = "--Randomized Evolutions--";
     public static final String CONDENSED_LEVEL_EVOLUTIONS = "--Condensed Level Evolutions--";
     public static final String POKEMON_BASE_STATS_TYPES = "--Pokemon Base Stats & Types--";
@@ -18,6 +19,7 @@ public class Conversion {
     public ArrayList<Pokemon> pokemonObjects = new ArrayList<>();
     public ArrayList<String> fields = new ArrayList<>();
     ArrayList<String> evolutions = new ArrayList<>();
+    public ArrayList<Move> movePokemonObjects = new ArrayList<>();
 
     public Conversion(String path) {
         this.inputLog = new File(path);
@@ -57,6 +59,42 @@ public class Conversion {
                     evolutions.add(value.substring(0, value.indexOf("now evolves")).trim());
                 }
             } while (isEndOfReading(value));
+            do {
+                value = reader.nextLine();
+            } while (isEndOfReading(value));
+            do {
+                value = reader.nextLine();
+            } while (isEndOfReading(value));
+            int nElements = 0;
+            do {
+                int nFields = 0;
+                value = reader.nextLine();
+                StringTokenizer splitPokemon = new StringTokenizer(reader.nextLine(), "|");
+                if (!value.equalsIgnoreCase(""))
+                    movePokemonObjects.add(new Move());
+                while (splitPokemon.hasMoreTokens()) {
+                    value = splitPokemon.nextToken().trim();
+                    if (isEndOfReading(value) && !value.equalsIgnoreCase("")) {
+                        if (nFields == 0)
+                            movePokemonObjects.get(nElements).setNum(Integer.parseInt(value));
+                        if (nFields == 1)
+                            movePokemonObjects.get(nElements).setName(value);
+                        if (nFields == 2)
+                            movePokemonObjects.get(nElements).setType(value);
+                        if (nFields == 3)
+                            movePokemonObjects.get(nElements).setPower(Integer.parseInt(value));
+                        if (nFields == 4)
+                            movePokemonObjects.get(nElements).setAccuracy(Integer.parseInt(value));
+                        if (nFields == 5)
+                            movePokemonObjects.get(nElements).setPP(Integer.parseInt(value));
+                        if (nFields == 6)
+                            movePokemonObjects.get(nElements).setCategory(value);
+                        nFields++;
+
+                    }
+                }
+                nElements++;
+            } while (isEndOfReading(value));
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -64,6 +102,9 @@ public class Conversion {
         }
     }
 
+    /**
+     * Assegnazione dei valori dalla lista di lettura pokemon all'interno della lista di oggetti di tipo Pokemon
+     */
     public void toPokemon() {
         for (int i = 0; i < pokemons.size(); i = i + 13) {
             int NUM = Integer.parseInt(pokemons.get(i));
@@ -82,6 +123,9 @@ public class Conversion {
 
     }
 
+    /**
+     * Stampa su terminale gli attributi della lista pokemonObjects
+     */
     public void printPokemons() {
         for (Pokemon pokemonObject : pokemonObjects) {
             System.out.println(pokemonObject.getName() + ": \n" +
@@ -103,7 +147,14 @@ public class Conversion {
         }
     }
 
-    public String printPokemonElement(int nElement, int field) {
+    /**
+     * Estrapola un singolo elemento del campo e pokemon scelto
+     *
+     * @param nElement Il numero del pokemon
+     * @param field    Il campo che si vuole inserire
+     * @return Il valore corrispondente al campo e al pokemon scelto
+     */
+    public String pokemonElement(int nElement, int field) {
         if (field == 0)
             return pokemonObjects.get(nElement).getName();
         else if (field == 1)
@@ -136,6 +187,12 @@ public class Conversion {
         return "missing field";
     }
 
+    /**
+     * Transforma il nome con il relativo valore numerico
+     *
+     * @param name Il nome da convertire in numero
+     * @return Il numero corrispondente al pokemon in input
+     */
     public int nameToInt(String name) {
         for (int i = 0; i < pokemonObjects.size(); i++) {
             if (pokemonObjects.get(i).getName().equals(name))
@@ -144,10 +201,19 @@ public class Conversion {
         return -1;
     }
 
-    public String intToName(int name) {
-        return pokemonObjects.get(name).getName();
+    /**
+     * Transforma il valore numerico con il numero corrispondente
+     *
+     * @param num il numero del pokemon da convertire in nome
+     * @return il nome corrispondente al numero del pokemon input
+     */
+    public String intToName(int num) {
+        return pokemonObjects.get(num).getName();
     }
 
+    /**
+     * Assegna al oggetto Pokemon la relativa evoluzione se presente
+     */
     public void setEvolutions() {
         for (int j = 0; j < evolutions.size(); j = j + 2) {
             for (Pokemon pokemonObject : pokemonObjects) {
@@ -158,6 +224,12 @@ public class Conversion {
 
     }
 
+    /**
+     * Verifica se si è arrivati alla fine della parte di testo da analizzare
+     *
+     * @param reading Il testo da controllare
+     * @return Ritorna vero o false in base al fatto che reading sia equivalente alle stringhe di controllo
+     */
     public boolean isEndOfReading(String reading) {
         return !reading.equalsIgnoreCase(RANDOMIZED_EVOLUTIONS) &&
                 !reading.equalsIgnoreCase(CONDENSED_LEVEL_EVOLUTIONS) &&

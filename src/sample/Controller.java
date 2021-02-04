@@ -1,23 +1,38 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import sample.convert.Conversion;
+import sample.convert.Move;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Controller {
-
+//    @FXML
+//    private TableColumn<Move, Node> nameMove;
+//    @FXML
+//    private TableColumn<Move, Node> typeMove;
+//    @FXML
+//    private TableColumn<Move, Node> powerMove;
+//    @FXML
+//    private TableColumn<Move, Node> accuracyMove;
+//    @FXML
+//    private TableColumn<Move, Node> PPMove;
+//    @FXML
+//    private TableColumn<Move, Node> categoryMove;
     @FXML
-    public ListView listViewMove;
+    public TableView<Move> tableViewMove;
     @FXML
     public Label evolution;
     @FXML
@@ -49,8 +64,10 @@ public class Controller {
     private Image[] imagesSprite;
     private Image[] imagesArtwork;
 
+
     @FXML
-    private void handleButtonAction() {
+    // all'evento di selezione di un file, si apre un menu di scelta e vengono caricati all'interno degli array pokemonObjects i pokemon estratti dal file
+    private void handleButtonAction() throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open log file");
         File file = fileChooser.showOpenDialog(null);
@@ -62,8 +79,15 @@ public class Controller {
             conversion.setEvolutions();
             imagesSprite = new Image[conversion.pokemonObjects.size()];
             imagesArtwork = new Image[conversion.pokemonObjects.size()];
+            Image imageCategoryPhysical = new Image(new FileInputStream(
+                    "C:\\Users\\DELL\\IdeaProjects\\pokedexRandomizer\\src\\img\\moveCategory\\Physical.png"));
+            Image imageCategorySpecial = new Image(new FileInputStream(
+                    "C:\\Users\\DELL\\IdeaProjects\\pokedexRandomizer\\src\\img\\moveCategory\\Special.png"));
+            Image imageCategoryStatus = new Image(new FileInputStream(
+                    "C:\\Users\\DELL\\IdeaProjects\\pokedexRandomizer\\src\\img\\moveCategory\\Status.png"));
+
             for (int i = 0; i < conversion.pokemonObjects.size(); i++) {
-                listView.getItems().add(conversion.printPokemonElement(i, 0));
+                listView.getItems().add(conversion.pokemonElement(i, 0));
                 Path imageFileArtwork = Paths.get(
                         "C:\\Users\\DELL\\IdeaProjects\\pokedexRandomizer\\src\\img\\pokemonArtworkDataBase\\" +
                                 (i + 1) + ".png");
@@ -80,7 +104,7 @@ public class Controller {
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
-                listView.setCellFactory(param -> new ListCell<String>() {
+                listView.setCellFactory(param -> new ListCell<>() {
                     private final ImageView imageView = new ImageView();
 
                     @Override
@@ -101,24 +125,61 @@ public class Controller {
                     }
                 });
             }
-
+            ObservableList<Move> moves = FXCollections.observableArrayList(conversion.movePokemonObjects);
+            tableViewMove.setItems(moves);
+            TableColumn<Move, String> nameMoveColumn = new TableColumn<>("Nome");
+            TableColumn<Move, String> typeMoveColumn = new TableColumn<>("Tipo");
+            TableColumn<Move, String> powerMoveColumn = new TableColumn<>("Power");
+            TableColumn<Move, String> accuracyMoveColumn = new TableColumn<>("Acc.");
+            TableColumn<Move, String> pPMoveColumn = new TableColumn<>("PP");
+            TableColumn<Move, ImageView> categoryMoveColumn = new TableColumn<>("Category");
+            nameMoveColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+            typeMoveColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+            powerMoveColumn.setCellValueFactory(new PropertyValueFactory<>("power"));
+            accuracyMoveColumn.setCellValueFactory(new PropertyValueFactory<>("accuracy"));
+            pPMoveColumn.setCellValueFactory(new PropertyValueFactory<>("PP"));
+            categoryMoveColumn.setCellValueFactory(new PropertyValueFactory<>("imageView"));
+            tableViewMove.getColumns().addAll(nameMoveColumn, typeMoveColumn, powerMoveColumn, accuracyMoveColumn, pPMoveColumn, categoryMoveColumn);
         }
     }
+
+
 
     @FXML
     private void selectElementOfList() {
         int elementNumber = conversion.nameToInt(listView.getSelectionModel().selectedItemProperty().getValue());
-        name.setText(conversion.printPokemonElement(elementNumber, 0));
-        type.setText(conversion.printPokemonElement(elementNumber, 1));
-        HP.setText(conversion.printPokemonElement(elementNumber, 2));
-        ATK.setText(conversion.printPokemonElement(elementNumber, 3));
-        DEF.setText(conversion.printPokemonElement(elementNumber, 4));
-        SATK.setText(conversion.printPokemonElement(elementNumber, 5));
-        SDEF.setText(conversion.printPokemonElement(elementNumber, 6));
-        SPE.setText(conversion.printPokemonElement(elementNumber, 7));
-        ability.setText(conversion.printPokemonElement(elementNumber, 8));
-        item.setText(conversion.printPokemonElement(elementNumber, 9));
-        evolution.setText(conversion.printPokemonElement(elementNumber, 10));
+        name.setText(conversion.pokemonElement(elementNumber, 0));
+        type.setText(conversion.pokemonElement(elementNumber, 1));
+        HP.setText(conversion.pokemonElement(elementNumber, 2));
+        ATK.setText(conversion.pokemonElement(elementNumber, 3));
+        DEF.setText(conversion.pokemonElement(elementNumber, 4));
+        SATK.setText(conversion.pokemonElement(elementNumber, 5));
+        SDEF.setText(conversion.pokemonElement(elementNumber, 6));
+        SPE.setText(conversion.pokemonElement(elementNumber, 7));
+        ability.setText(conversion.pokemonElement(elementNumber, 8));
+        item.setText(conversion.pokemonElement(elementNumber, 9));
+        evolution.setText(conversion.pokemonElement(elementNumber, 10));
         img.setImage(imagesArtwork[elementNumber]);
+    }
+
+    @FXML
+    private void selectEvolution() {
+        try {
+            int elementNumber = conversion.nameToInt(evolution.getText());
+            name.setText(conversion.pokemonElement(elementNumber, 0));
+            type.setText(conversion.pokemonElement(elementNumber, 1));
+            HP.setText(conversion.pokemonElement(elementNumber, 2));
+            ATK.setText(conversion.pokemonElement(elementNumber, 3));
+            DEF.setText(conversion.pokemonElement(elementNumber, 4));
+            SATK.setText(conversion.pokemonElement(elementNumber, 5));
+            SDEF.setText(conversion.pokemonElement(elementNumber, 6));
+            SPE.setText(conversion.pokemonElement(elementNumber, 7));
+            ability.setText(conversion.pokemonElement(elementNumber, 8));
+            item.setText(conversion.pokemonElement(elementNumber, 9));
+            evolution.setText(conversion.pokemonElement(elementNumber, 10));
+            img.setImage(imagesArtwork[elementNumber]);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
