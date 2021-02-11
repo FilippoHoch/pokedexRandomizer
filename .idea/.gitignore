@@ -3,3 +3,5 @@
 /workspace.xml
 # CodeStream ignored files
 /../../pokedexRandomizer\.idea/codestream.xml
+# Project exclude paths
+/out/
