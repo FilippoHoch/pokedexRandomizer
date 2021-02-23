@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.text.*?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="center" hgap="10" vgap="10"
+          xmlns="http://javafx.com/javafx/15.0.1" fx:controller="Graphic.Controller">
+    <columnConstraints>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+    </rowConstraints>
+    <children>
+        <AnchorPane prefHeight="300.0" prefWidth="500.0">
+            <children>
+                <SplitPane dividerPositions="0.5" layoutX="140.0" layoutY="36.0" orientation="VERTICAL"
+                           prefHeight="454.0" prefWidth="652.0" AnchorPane.bottomAnchor="0.0"
+                           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                            <children>
+                                <ScrollBar layoutX="584.0" orientation="VERTICAL" prefHeight="146.0" prefWidth="14.0"
+                                           AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                           AnchorPane.topAnchor="0.0"/>
+                                <Separator layoutX="390.0" layoutY="-6.0" orientation="VERTICAL" prefHeight="152.0"
+                                           prefWidth="3.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="150.0"
+                                           AnchorPane.topAnchor="0.0"/>
+                                <ListView fx:id="listPokemonDescription" layoutX="341.0" layoutY="-27.0"
+                                          prefHeight="146.0" prefWidth="145.0" AnchorPane.bottomAnchor="0.0"
+                                          AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="12.0"
+                                          AnchorPane.topAnchor="0.0"/>
+                                <GridPane layoutX="203.0" prefHeight="146.0" prefWidth="136.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="HP" GridPane.rowIndex="1"/>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ATK" GridPane.rowIndex="2"/>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DEF" GridPane.rowIndex="3"/>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="S. ATK"
+                                              GridPane.rowIndex="4"/>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="S. DEF"
+                                              GridPane.rowIndex="5"/>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SPD" GridPane.rowIndex="6"/>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stats:"/>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Value"
+                                              GridPane.columnIndex="1"/>
+                                        <Text fx:id="hPDescription" strokeType="OUTSIDE" strokeWidth="0.0"
+                                              GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                        <Text fx:id="aTKDescription" strokeType="OUTSIDE" strokeWidth="0.0"
+                                              GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                        <Text fx:id="dEFDescription" strokeType="OUTSIDE" strokeWidth="0.0"
+                                              GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                        <Text fx:id="sATKDescription" strokeType="OUTSIDE" strokeWidth="0.0"
+                                              GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                                        <Text fx:id="sDEFDescription" strokeType="OUTSIDE" strokeWidth="0.0"
+                                              GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                                        <Text fx:id="sPDDescription" strokeType="OUTSIDE" strokeWidth="0.0"
+                                              GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                                    </children>
+                                </GridPane>
+                                <GridPane layoutX="16.0" layoutY="120.0" prefHeight="27.0" prefWidth="184.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo 1"/>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo 2"
+                                              GridPane.columnIndex="1"/>
+                                    </children>
+                                </GridPane>
+                                <ImageView fx:id="spriteDescription" fitHeight="112.0" fitWidth="124.0" layoutX="16.0"
+                                           layoutY="8.0" pickOnBounds="true" preserveRatio="true"
+                                           AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="5.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="509.0">
+                            <children>
+                                <CubicCurve controlX1="157.98187255859375" controlX2="-150.0"
+                                            controlY1="15.001039505004883" controlY2="15.0" endX="249.0"
+                                            fill="DODGERBLUE" layoutX="248.0" layoutY="-6.0" startX="-249.0"
+                                            stroke="BLACK" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                            AnchorPane.topAnchor="0.0"/>
+                                <CubicCurve controlX1="152.01841735839844" controlX2="-150.0" controlY1="15.0"
+                                            controlY2="15.0" endX="249.0" fill="DODGERBLUE" layoutX="249.0"
+                                            layoutY="103.0" rotate="180.0" startX="-249.0" stroke="BLACK"
+                                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                            AnchorPane.rightAnchor="0.0"/>
+                                <Label fx:id="descprition" layoutX="14.0" layoutY="20.0" prefHeight="106.0"
+                                       prefWidth="470.0" text="Label"/>
+                            </children>
+                        </AnchorPane>
+                    </items>
+                </SplitPane>
+            </children>
+        </AnchorPane>
+    </children>
+</GridPane>
