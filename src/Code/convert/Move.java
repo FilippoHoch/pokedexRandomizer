@@ -16,7 +16,7 @@ public class Move {
     private String category;
     private ImageView imageView;
 
-
+    // Costruttore
     public Move(int num) {
         this.num = num;
     }
@@ -29,6 +29,7 @@ public class Move {
         return num;
     }
 
+    // Getter e Setter
     public void setNum(int num) {
         this.num = num;
     }
@@ -86,6 +87,10 @@ public class Move {
         return imageView;
     }
 
+    /**
+     * Serve per impostare l'immagine in base alla categoria della mossa presa in esame
+     * @param categoryImage stringa contenente il tipo della mossa
+     */
     public void setImageView(String categoryImage) {
         if (categoryImage.equalsIgnoreCase("Physical")) {
             try {

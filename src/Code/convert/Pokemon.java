@@ -19,6 +19,7 @@ public class Pokemon {
     private String item;
     private String evolution;
 
+    // Costruttore
     public Pokemon(int NUM, String name, String type, int HP, int ATK, int DEF, int SATK, int SDEF, int SPE,
                    String ability1, String ability2, String ability3, String item) {
         this.NUM = NUM;
@@ -37,6 +38,7 @@ public class Pokemon {
         this.item = item;
     }
 
+    // Getter e Setter
     public String getEvolution() {
         return evolution;
     }

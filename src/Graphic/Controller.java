@@ -12,7 +12,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -50,12 +49,14 @@ public class Controller {
     private ListView<String> listView = new ListView<>();
     private Conversion conversion;
     private Image[] imagesSprite;
-    private Image[] imagesArtwork;
+
 
 
     @FXML
-    // all'evento di selezione di un file, si apre un menu di scelta e vengono caricati all'interno degli array pokemonObjects i pokemon estratti dal file
-    private void handleButtonAction() throws FileNotFoundException {
+    /**
+     * All'evento di selezione di un file, si apre un menu di scelta e vengono caricati all'interno degli array pokemonObjects i pokemon estratti dal file
+     */
+    private void handleButtonAction() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open log file");
         File file = fileChooser.showOpenDialog(null);
@@ -66,18 +67,10 @@ public class Controller {
             conversion.toPokemon();
             conversion.setEvolutions();
             imagesSprite = new Image[conversion.pokemonObjects.size()];
-            imagesArtwork = new Image[conversion.pokemonObjects.size()];
 
             for (int i = 0; i < conversion.pokemonObjects.size(); i++) {
                 listView.getItems().add(conversion.pokemonElement(i, 0));
-                Path imageFileArtwork = Paths.get(
-                        "src/Graphic/img/pokemonArtworkDataBase/" +
-                                (i + 1) + ".png");
-                try {
-                    imagesArtwork[i] = new Image(imageFileArtwork.toUri().toURL().toExternalForm());
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
+
                 Path imageFileSprite = Paths.get(
                         "src/Graphic/img/pokemonSpriteDataBase/" +
                                 conversion.intToName(i).toLowerCase() + ".png");
@@ -121,14 +114,15 @@ public class Controller {
             accuracyMoveColumn.setCellValueFactory(new PropertyValueFactory<>("accuracy"));
             pPMoveColumn.setCellValueFactory(new PropertyValueFactory<>("PP"));
             categoryMoveColumn.setCellValueFactory(new PropertyValueFactory<>("imageView"));
-            tableViewMove.getColumns()
-                    .addAll(nameMoveColumn, typeMoveColumn, powerMoveColumn, accuracyMoveColumn, pPMoveColumn,
-                            categoryMoveColumn);
+            tableViewMove.getColumns().addAll(nameMoveColumn, typeMoveColumn, powerMoveColumn, accuracyMoveColumn, pPMoveColumn, categoryMoveColumn);
         }
     }
 
 
     @FXML
+    /**
+     * Questo è il metodo utilizzato per visualizzare tutte le caratteristiche del Pokemon che selezioniamo dalla lista
+     */
     private void selectElementOfList() {
         int elementNumber = conversion.nameToInt(listView.getSelectionModel().selectedItemProperty().getValue());
         name.setText(conversion.pokemonElement(elementNumber, 0));
@@ -142,10 +136,29 @@ public class Controller {
         ability.setText(conversion.pokemonElement(elementNumber, 8));
         item.setText(conversion.pokemonElement(elementNumber, 9));
         evolution.setText(conversion.pokemonElement(elementNumber, 10));
-        img.setImage(imagesArtwork[elementNumber]);
+        String url;
+        if (elementNumber+1 < 10) {
+            url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/00" + (elementNumber+1) + ".png";
+        }
+        else if (elementNumber+1 < 100) {
+            url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/0" + (elementNumber+1) + ".png";
+        }
+        else {
+            url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/" + (elementNumber+1) + ".png";
+        }
+        Image image = new Image(url);
+        if (image.isError()) {
+            System.out.println("Errore");
+            // if you need more details
+            // image.getException().printStackTrace();
+        }
+        img.setImage(image);
     }
 
     @FXML
+    /**
+     * Quando si clicca sul nome dell'evoluzione del Pokemon si aprono direttamente le caratteristiche dell'evoluzioneX
+     */
     private void selectEvolution() {
         try {
             int elementNumber = conversion.nameToInt(evolution.getText());
@@ -160,7 +173,23 @@ public class Controller {
             ability.setText(conversion.pokemonElement(elementNumber, 8));
             item.setText(conversion.pokemonElement(elementNumber, 9));
             evolution.setText(conversion.pokemonElement(elementNumber, 10));
-            img.setImage(imagesArtwork[elementNumber]);
+            String url;
+            if (elementNumber+1 < 10) {
+                url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/00" + (elementNumber+1) + ".png";
+            }
+            else if (elementNumber+1 < 100) {
+                url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/0" + (elementNumber+1) + ".png";
+            }
+            else {
+                url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/" + (elementNumber+1) + ".png";
+            }
+            Image image = new Image(url);
+            if (image.isError()) {
+                System.out.println("Errore");
+                // if you need more details
+                // image.getException().printStackTrace();
+            }
+            img.setImage(image);
         } catch (Exception e) {
             e.printStackTrace();
         }
