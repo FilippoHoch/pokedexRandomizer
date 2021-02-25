@@ -19,7 +19,7 @@ For installation it is necessary to add / change the library of the project, by 
 ```bash
 --module-path 
 
-"path of your javaFX libraries " 
+"path of your javaFX libraries" 
 
 --add-modules 
 
