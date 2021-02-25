@@ -38,11 +38,11 @@ Nella prima settimana di lavoro, ci siamo focalizzati soprattutto sulla parte de
 
 - Aggiunta di ulteriori commenti 
 
-- Aggiunta di sezione Help 
+- Aggiunta di sezione Help
 
-- Risoluzione problemi relativi al cambio di librerie 
+- Risoluzione problemi relativi al cambio di librerie
 
-- Rifinitura del codice 
+- Rifinitura del codice
 
 ## Autori 
 
