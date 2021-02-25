@@ -46,10 +46,10 @@ Nella prima settimana di lavoro, ci siamo focalizzati soprattutto sulla parte de
 
 ## Autori 
 
-- Filippo Hoch 
+- [Filippo Hoch](https://github.com/FilippoHoch)
 
-- Paolo Braga 
+- [Paolo Braga](https://github.com/PaoloBraga)
 
 - Gabriele Borghesi 
 
-- Daniele Romano 
+- [Daniele Romano](https://github.com/ROMA030)
