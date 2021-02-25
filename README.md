@@ -50,6 +50,6 @@ Nella prima settimana di lavoro, ci siamo focalizzati soprattutto sulla parte de
 
 - [Paolo Braga](https://github.com/PaoloBraga)
 
-- Gabriele Borghesi 
+- [Gabriele Borghesi](https://github.com/Gabry-EXE)
 
 - [Daniele Romano](https://github.com/ROMA030)
