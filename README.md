@@ -30,26 +30,20 @@ javafx.controls,javafx.fxml
 
 Nella prima settimana di lavoro, ci siamo focalizzati soprattutto sulla parte del codice del progetto, migliorandolo e risolvendo alcuni piccoli problemi riscontrati, abbiamo aggiunto diverso commenti e Javadoc in modo da rendere il codice più comprensibile e pulito. Inoltre abbiamo cambiato i riferimenti alle immagini, in modo tale da utilizzare quelle ufficiali con un riferimento http. Facendo così che il programma risulti più leggero per la condivisione.  
 
+## Seconda settimana
+
+In maniera opposta a quanto svolto nella prima settimana ci siamo concentratti principalmente sul secondo progetto, anche se abbiamo tentato di migliorare quest'ultimo con purtoppo scarsi risultati, infatti avevamo intenzione di aggiungere un file eseguibile per l'avvio del programma, ma per una serie di motivi e dopo consiglio di Vaccari e Vivante abbiamo deciso di cancellare questa funzionalità, questo perchè l'operazione era decisamente lunga e poco remunerativa al punto tale da convincerci ad abbandonare l'idea.
+
 ## Work in Progress 
 
-- Aggiunta di file eseguibile 
-
 - Correzione problemi relativi alla velocità di caricamento del programma (soprattutto Immagini) 
-
 - Aggiunta di ulteriori commenti 
-
 - Aggiunta di sezione Help
-
-- Risoluzione problemi relativi al cambio di librerie
-
 - Rifinitura del codice
 
 ## Autori 
 
 - [Filippo Hoch](https://github.com/FilippoHoch)
-
 - [Paolo Braga](https://github.com/PaoloBraga)
-
 - [Gabriele Borghesi](https://github.com/Gabry-EXE)
-
 - [Daniele Romano](https://github.com/ROMA030)
