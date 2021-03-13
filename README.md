@@ -8,7 +8,7 @@ Il progetto si compone principalmente da due sotto progetti, il primo [pokedexRa
 
 Questo programma, dato un file log di una Rom Pokémon randomizzata, permette di visualizzare l’intero Pokédex del gioco con le modifiche apportate dalla randomizzazione del gioco, quali la modifica dei tipi dei Pokémon, le abilità che essi hanno, ma anche i tipi delle mosse e la loro potenza. 
 
-Nello specifico una Randomizer è generata da un programma chiamato [Universal Pokémon Randomizer”](https://github.com/Dabomstew/universal-pokemon-randomizer)
+Nello specifico una Randomizer è generata da un programma chiamato ["Universal Pokémon Randomizer”](https://github.com/Dabomstew/universal-pokemon-randomizer)
 
 
 Questo Pokédex è fornito delle immagini ufficiali dei Pokémon che possono essere visualizzate selezionandoli nella lista posta sul lato sinistro della finestra; inoltre è possibile visualizzare in cosa si evolve ogni Pokémon e cliccando il nome dell’evoluzione si aprirà direttamente la finestra legata alle informazioni del Pokémon evoluto. 
@@ -25,6 +25,7 @@ For installation it is necessary to add / change the library of the project, by 
 
 javafx.controls,javafx.fxml 
 ```
+Or follow this [video](https://youtu.be/FylHot91Lz8)
 
 ## Prima settimana 
 
@@ -33,6 +34,11 @@ Nella prima settimana di lavoro, ci siamo focalizzati soprattutto sulla parte de
 ## Seconda settimana
 
 In maniera opposta a quanto svolto nella prima settimana ci siamo concentratti principalmente sul secondo progetto, anche se abbiamo tentato di migliorare quest'ultimo con purtoppo scarsi risultati, infatti avevamo intenzione di aggiungere un file eseguibile per l'avvio del programma, ma per una serie di motivi e dopo consiglio di Vaccari e Vivante abbiamo deciso di cancellare questa funzionalità, questo perchè l'operazione era decisamente lunga e poco remunerativa al punto tale da convincerci ad abbandonare l'idea.
+
+## Terza settimana
+
+In questa settimana, questa parte del progetto è stata messa un pò in secondo piano per poterci dedicare maggiormente alla seconda parte, nel frattempo abbiamo comunque rifinto il codice, risolvendo alcuni problemi riguardanti i riferimenti ipertestuali e la grafica.
+
 
 ## Work in Progress 
 
