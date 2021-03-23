@@ -82,6 +82,6 @@ Dopo aver fatto partire il programma, si aprirà una finestra, la quale mostra u
 ## Siti utilizzati per ottenere informazioni necessarie
 
 Oltre al sito ufficiale, abbiamo utilizzato anche altri siti molto utili:
--[fontmeme.com](https://fontmeme.com/it/font-pokemon/): questo sito è stato utile per la creazione di varie scritte nello stile proprio dei vari giochi Pokémon;
--[veekun/pokedex](https://github.com/veekun/pokedex): questo sito è stato utilizzato per ottenere informazioni sull’id, il peso e le abilità dei pokémon;
--[veekun.com/dex/downloads](https://veekun.com/dex/downloads): consultato per poter utilizzare gli sprite che erano necessari per rappresentare le orme o le sprite dei pokémon.
+- [fontmeme.com](https://fontmeme.com/it/font-pokemon/): questo sito è stato utile per la creazione di varie scritte nello stile proprio dei vari giochi Pokémon;
+- [veekun/pokedex](https://github.com/veekun/pokedex): questo sito è stato utilizzato per ottenere informazioni sull’id, il peso e le abilità dei pokémon;
+- [veekun.com/dex/downloads](https://veekun.com/dex/downloads): consultato per poter utilizzare gli sprite che erano necessari per rappresentare le orme o le sprite dei pokémon.
