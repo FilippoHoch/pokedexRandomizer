@@ -6,13 +6,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 
+import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -49,7 +54,6 @@ public class Controller {
     private ListView<String> listView = new ListView<>();
     private Conversion conversion;
     private Image[] imagesSprite;
-
 
 
     @FXML
@@ -114,7 +118,9 @@ public class Controller {
             accuracyMoveColumn.setCellValueFactory(new PropertyValueFactory<>("accuracy"));
             pPMoveColumn.setCellValueFactory(new PropertyValueFactory<>("PP"));
             categoryMoveColumn.setCellValueFactory(new PropertyValueFactory<>("imageView"));
-            tableViewMove.getColumns().addAll(nameMoveColumn, typeMoveColumn, powerMoveColumn, accuracyMoveColumn, pPMoveColumn, categoryMoveColumn);
+            tableViewMove.getColumns()
+                    .addAll(nameMoveColumn, typeMoveColumn, powerMoveColumn, accuracyMoveColumn, pPMoveColumn,
+                            categoryMoveColumn);
         }
     }
 
@@ -137,14 +143,12 @@ public class Controller {
         item.setText(conversion.pokemonElement(elementNumber, 9));
         evolution.setText(conversion.pokemonElement(elementNumber, 10));
         String url;
-        if (elementNumber+1 < 10) {
-            url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/00" + (elementNumber+1) + ".png";
-        }
-        else if (elementNumber+1 < 100) {
-            url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/0" + (elementNumber+1) + ".png";
-        }
-        else {
-            url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/" + (elementNumber+1) + ".png";
+        if (elementNumber + 1 < 10) {
+            url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/00" + (elementNumber + 1) + ".png";
+        } else if (elementNumber + 1 < 100) {
+            url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/0" + (elementNumber + 1) + ".png";
+        } else {
+            url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/" + (elementNumber + 1) + ".png";
         }
         Image image = new Image(url);
         if (image.isError()) {
@@ -174,14 +178,12 @@ public class Controller {
             item.setText(conversion.pokemonElement(elementNumber, 9));
             evolution.setText(conversion.pokemonElement(elementNumber, 10));
             String url;
-            if (elementNumber+1 < 10) {
-                url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/00" + (elementNumber+1) + ".png";
-            }
-            else if (elementNumber+1 < 100) {
-                url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/0" + (elementNumber+1) + ".png";
-            }
-            else {
-                url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/" + (elementNumber+1) + ".png";
+            if (elementNumber + 1 < 10) {
+                url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/00" + (elementNumber + 1) + ".png";
+            } else if (elementNumber + 1 < 100) {
+                url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/0" + (elementNumber + 1) + ".png";
+            } else {
+                url = "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/" + (elementNumber + 1) + ".png";
             }
             Image image = new Image(url);
             if (image.isError()) {
@@ -191,6 +193,15 @@ public class Controller {
             }
             img.setImage(image);
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void help() {
+        try {
+            Desktop.getDesktop().browse(new URL("https://github.com/FilippoHoch/pokedexRandomizer").toURI());
+        } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
     }

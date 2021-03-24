@@ -89,6 +89,7 @@ public class Move {
 
     /**
      * Serve per impostare l'immagine in base alla categoria della mossa presa in esame
+     *
      * @param categoryImage stringa contenente il tipo della mossa
      */
     public void setImageView(String categoryImage) {
