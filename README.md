@@ -43,13 +43,6 @@ In questa settimana, questa parte del progetto è stata messa un pò in secondo 
 
 Durante la settimana, siamo riusciti nella correzione di alcune problematiche, migliorando il codice e aggiungendo commenti.
 
-## Work in Progress 
-
-- Correzione problemi relativi alla velocità di caricamento del programma (soprattutto Immagini) 
-- Aggiunta di ulteriori commenti 
-- Aggiunta di sezione Help
-- Rifinitura del codice
-
 ## Autori 
 
 - [Filippo Hoch](https://github.com/FilippoHoch)
